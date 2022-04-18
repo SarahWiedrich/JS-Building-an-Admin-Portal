@@ -3,6 +3,19 @@ async function main() {
     let response = await fetch('http://localhost:3001/listBooks')
     let books = await response.json()
 
+    let update = await fetch('http://localhost:3001/updateBook', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({
+            'id':3,
+            'title': 'Legends of Arathrae'
+        }),
+    });
+
+    let updateBook = await update.jsoon();
+    console.log(updateBook)
     books.forEach(renderBook)
 }
 
@@ -26,3 +39,14 @@ function renderBook(book) {
 }
 
 main()
+
+let response = fetch('http://localhost:9001/updateBook', {
+    method: 'PATCH',
+    headers: {
+        'Content-Type':'application/json'
+    },
+    body: JASON.stringify({
+        'id': 3,
+        'title': 'Legends of Arathrae'
+    })
+}
